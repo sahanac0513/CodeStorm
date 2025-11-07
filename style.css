@@ -1,0 +1,134 @@
+
+/* Global Styles - darker neutral theme */
+body {
+    background: #000000; /* solid black background */
+    color: #f7fbff; /* very light text for strong contrast */
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+}
+
+:root {
+    --accent-1: #2563eb;
+    --accent-2: #3b82f6;
+}
+
+/* Streamlit Container Customization */
+.stApp > header {
+    background: transparent !important;
+}
+
+.streamlit-expanderHeader {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(6px);
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(37, 99, 235, 0.28);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(37, 99, 235, 0.42);
+}
+
+/* Input Fields */
+.stTextInput > div > div > input,
+.stSelectbox > div > div > input {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 8px !important;
+    color: #f7fbff !important;
+}
+
+/* Progress Bars */
+.stProgress > div > div > div > div {
+    background: linear-gradient(90deg, var(--accent-1) 0%, var(--accent-2) 100%) !important;
+}
+
+/* Alerts and Messages */
+.stAlert {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: #f7fbff !important;
+    border-radius: 10px !important;
+}
+
+/* Tables */
+.stTable {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(6px);
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Charts and Plots */
+.stPlot {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(6px);
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding: 0.9rem !important;
+}
+
+    /* Button shine and ambient glow */
+    .stButton>button { position: relative; overflow: hidden; }
+    .stButton>button:after {
+        content: '';
+        position: absolute;
+        left: -40%;
+        top: -40%;
+        width: 180%;
+        height: 180%;
+        background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 40%);
+        transform: scale(0);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+    }
+    .stButton>button:active:after { transform: scale(1); transition: transform 0s; }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle at 8% 12%, rgba(37,99,235,0.06) 0%, transparent 12%), radial-gradient(circle at 92% 88%, rgba(59,130,246,0.04) 0%, transparent 18%);
+        z-index: -1;
+        animation: bgPulse 12s ease-in-out infinite;
+    }
+
+    @keyframes bgPulse { 0% { opacity: 0.9 } 50% { opacity: 1 } 100% { opacity: 0.95 } }
+
+    @media (prefers-reduced-motion: reduce) {
+        .main-header, .content-container, .stButton>button, body::before { animation: none !important; }
+        .content-container:hover { transform: none !important; box-shadow: none !important; }
+    }
+/* Animations for header and buttons */
+@keyframes floaty {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.main-header { animation: floaty 6s ease-in-out infinite; }
+.stButton>button { background-size: 200% 200%; animation: shimmer 4s linear infinite; }
+.stButton>button:hover { animation: none; }
