@@ -348,7 +348,7 @@ def learning_page():
             df = pd.DataFrame(df_data)
             
             # Display as table with clickable links
-            st.markdown(df.to_markdown(index=False), unsafe_allow_html=True)
+            st.table(df)
             
             st.info(f"**Total Learning Time:** Approximately {total_hours} hours ({total_hours//40} weeks at 40 hours/week)")
         else:
